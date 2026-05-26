@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation"
 import { MediaPlaceholder } from "@/components/MediaPlaceholder"
+import { getSymptomBySlug } from "@/lib/symptoms-config"
 
 interface PageProps {
   params: {
@@ -228,15 +229,28 @@ export default async function DirectionPage({ params }: PageProps) {
             </header>
 
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-              {directionData.symptoms.map((symptom: any) => (
-                <a
-                  key={symptom.slug}
-                  href={`/chto-my-lechim/${symptom.slug}`}
-                  className="block rounded-xl border border-neutral-200 bg-white p-4 text-sm transition-colors hover:border-neutral-300 hover:bg-neutral-50"
-                >
-                  <div className="font-semibold">{symptom.title}</div>
-                </a>
-              ))}
+              {directionData.symptoms.map((symptom: any) => {
+                const exists = Boolean(getSymptomBySlug(symptom.slug))
+                if (exists) {
+                  return (
+                    <a
+                      key={symptom.slug}
+                      href={`/chto-my-lechim/${symptom.slug}`}
+                      className="block rounded-xl border border-neutral-200 bg-white p-4 text-sm transition-colors hover:border-neutral-300 hover:bg-neutral-50"
+                    >
+                      <div className="font-semibold">{symptom.title}</div>
+                    </a>
+                  )
+                }
+                return (
+                  <div
+                    key={symptom.slug}
+                    className="block rounded-xl border border-neutral-200 bg-white p-4 text-sm"
+                  >
+                    <div className="font-semibold text-neutral-400">{symptom.title}</div>
+                  </div>
+                )
+              })}
             </div>
           </section>
 

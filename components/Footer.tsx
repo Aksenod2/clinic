@@ -57,9 +57,9 @@ export function Footer() {
               <a href="/vozvrat-naloga" className="block hover:underline hover:underline-offset-2">
                 Возврат налога за лечение
               </a>
-              <a href="/politika-konfidencialnosti" className="block hover:underline hover:underline-offset-2">
+              <span className="block text-neutral-400">
                 Политика конфиденциальности
-              </a>
+              </span>
             </div>
           </div>
         </div>
