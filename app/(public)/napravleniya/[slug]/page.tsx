@@ -62,14 +62,14 @@ function getDirectionData(slug: string) {
         { slug: "tretiy-trimestr", title: "Третий триместр" },
       ],
       doctors: [
-        { name: "ФИО врача", specialty: "Акушер‑гинеколог • стаж 12 лет", branches: ["Бутово", "Арбатская"] },
-        { name: "ФИО врача", specialty: "Врач УЗД • стаж 9 лет", branches: ["Балашиха"] },
-        { name: "ФИО врача", specialty: "Акушер‑гинеколог • стаж 15 лет", branches: ["Арбатская"] },
+        { slug: "akusher-ginekolog-1", name: "ФИО врача", specialty: "Акушер‑гинеколог • стаж 12 лет", branches: ["Бутово", "Арбатская"] },
+        { slug: "akusher-ginekolog-2", name: "ФИО врача", specialty: "Врач УЗД • стаж 9 лет", branches: ["Балашиха"] },
+        { slug: "akusher-ginekolog-1", name: "ФИО врача", specialty: "Акушер‑гинеколог • стаж 15 лет", branches: ["Арбатская"] },
       ],
       branches: [
-        { name: "Бутово", address: "Адрес филиала, метро", available: true },
-        { name: "Арбатская", address: "Адрес филиала, метро", available: true },
-        { name: "Балашиха", address: "Адрес филиала, район", available: true },
+        { slug: "butovo", name: "Бутово", address: "Адрес филиала, метро", available: true },
+        { slug: "arbatskaya", name: "Арбатская", address: "Адрес филиала, метро", available: true },
+        { slug: "balashiha", name: "Балашиха", address: "Адрес филиала, район", available: true },
       ],
     },
   }
@@ -289,7 +289,7 @@ export default async function DirectionPage({ params }: PageProps) {
                       ))}
                     </div>
                     <Link
-                      href={`/vrachi/${doctor.name.toLowerCase().replace(/\s+/g, "-")}`}
+                      href={`/vrachi/${doctor.slug}`}
                       className="mt-1 inline-flex w-fit items-center justify-center rounded-lg border border-neutral-200 bg-neutral-50 px-3 py-1.5 text-xs transition-colors hover:bg-neutral-100"
                     >
                       Профиль врача
@@ -339,13 +339,13 @@ export default async function DirectionPage({ params }: PageProps) {
                     />
                     <div className="mt-2 flex gap-2">
                       <Link
-                        href={`/kliniki/${branch.name.toLowerCase()}`}
+                        href={`/kliniki/${branch.slug}`}
                         className="inline-flex flex-1 items-center justify-center rounded-lg border border-neutral-200 bg-neutral-50 px-3 py-1.5 text-xs transition-colors hover:bg-neutral-100"
                       >
                         Как добраться
                       </Link>
                       <Link
-                        href={`/zapis?direction=${params.slug}&clinic=${branch.name.toLowerCase()}`}
+                        href={`/zapis?direction=${params.slug}&clinic=${branch.slug}`}
                         className="inline-flex flex-1 items-center justify-center rounded-lg border border-neutral-900 bg-neutral-900 px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-neutral-800"
                       >
                         Записаться сюда
