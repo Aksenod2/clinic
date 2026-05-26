@@ -415,12 +415,12 @@ export default function HomePage() {
                     <div className="mb-2 text-xs text-neutral-500">{clinic.note}</div>
                   ) : null}
                   <div className="mb-3 text-sm text-neutral-700">{clinic.phone}</div>
-                  <a
+                  <Link
                     href={`/kliniki/${clinic.name.toLowerCase()}`}
                     className="text-sm text-neutral-600 underline underline-offset-2"
                   >
                     Подробнее о филиале →
-                  </a>
+                  </Link>
                 </article>
               ))}
             </div>
@@ -485,7 +485,7 @@ export default function HomePage() {
             </header>
 
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              <a
+              <Link
                 href="/vakansii"
                 className="group flex flex-col rounded-xl border border-neutral-200 bg-white p-5 transition-colors hover:border-neutral-300 hover:bg-neutral-50"
               >
@@ -496,9 +496,9 @@ export default function HomePage() {
                 <div className="mt-auto text-sm text-neutral-500 underline underline-offset-2 group-hover:text-neutral-700">
                   Смотреть вакансии →
                 </div>
-              </a>
+              </Link>
 
-              <a
+              <Link
                 href="/strahovka"
                 className="group flex flex-col rounded-xl border border-neutral-200 bg-white p-5 transition-colors hover:border-neutral-300 hover:bg-neutral-50"
               >
@@ -509,9 +509,9 @@ export default function HomePage() {
                 <div className="mt-auto text-sm text-neutral-500 underline underline-offset-2 group-hover:text-neutral-700">
                   Подробнее о страховке →
                 </div>
-              </a>
+              </Link>
 
-              <a
+              <Link
                 href="/oms"
                 className="group flex flex-col rounded-xl border border-neutral-200 bg-white p-5 transition-colors hover:border-neutral-300 hover:bg-neutral-50"
               >
@@ -522,9 +522,9 @@ export default function HomePage() {
                 <div className="mt-auto text-sm text-neutral-500 underline underline-offset-2 group-hover:text-neutral-700">
                   Документация ОМС →
                 </div>
-              </a>
+              </Link>
 
-              <a
+              <Link
                 href="/vozvrat-naloga"
                 className="group flex flex-col rounded-xl border border-neutral-200 bg-white p-5 transition-colors hover:border-neutral-300 hover:bg-neutral-50"
               >
@@ -535,7 +535,7 @@ export default function HomePage() {
                 <div className="mt-auto text-sm text-neutral-500 underline underline-offset-2 group-hover:text-neutral-700">
                   О налоговом вычете →
                 </div>
-              </a>
+              </Link>
             </div>
           </section>
         </div>
