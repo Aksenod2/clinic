@@ -438,12 +438,11 @@ export default function HomePage() {
                   Несколько типичных отзывов о клинике и врачах. Тексты носят ознакомительный характер и не заменяют консультацию специалиста.
                 </p>
               </div>
-              <a
-                href="/otzyvy"
-                className="inline-flex items-center justify-center rounded-xl border border-neutral-200 bg-white px-5 py-2.5 text-sm font-medium transition-colors hover:bg-neutral-100"
+              <span
+                className="inline-flex items-center justify-center rounded-xl border border-neutral-200 bg-white px-5 py-2.5 text-sm font-medium text-neutral-400"
               >
-                Все отзывы →
-              </a>
+                Все отзывы
+              </span>
             </header>
 
             <div className="grid gap-4 md:grid-cols-3">
