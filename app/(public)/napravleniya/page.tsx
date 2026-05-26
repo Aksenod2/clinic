@@ -1,6 +1,7 @@
 import Link from "next/link"
 
 import { directions } from "@/lib/directions"
+import { isValidRoute } from "@/lib/valid-routes"
 import { MediaPlaceholder } from "@/components/MediaPlaceholder"
 
 export async function generateMetadata() {
@@ -78,16 +79,22 @@ export default function DirectionsPage() {
                     </div>
 
                     <div className="flex flex-wrap gap-3">
-                      <Link
-                        href={`/napravleniya/${direction.slug}`}
-                        className={`inline-flex items-center justify-center rounded-xl border px-5 py-2.5 text-sm font-medium transition-colors ${
-                          direction.isHighlighted
-                            ? "border-neutral-900 bg-neutral-900 text-white hover:bg-neutral-800"
-                            : "border-neutral-200 bg-white hover:bg-neutral-50"
-                        }`}
-                      >
-                        Подробнее о направлении
-                      </Link>
+                      {isValidRoute(`/napravleniya/${direction.slug}`) ? (
+                        <Link
+                          href={`/napravleniya/${direction.slug}`}
+                          className={`inline-flex items-center justify-center rounded-xl border px-5 py-2.5 text-sm font-medium transition-colors ${
+                            direction.isHighlighted
+                              ? "border-neutral-900 bg-neutral-900 text-white hover:bg-neutral-800"
+                              : "border-neutral-200 bg-white hover:bg-neutral-50"
+                          }`}
+                        >
+                          Подробнее о направлении
+                        </Link>
+                      ) : (
+                        <span className="inline-flex cursor-default items-center justify-center rounded-xl border border-neutral-200 bg-white px-5 py-2.5 text-sm font-medium text-neutral-400">
+                          Подробнее о направлении
+                        </span>
+                      )}
                       <Link
                         href={`/uslugi?direction=${direction.slug}`}
                         className="inline-flex items-center justify-center rounded-xl border border-neutral-200 bg-white px-5 py-2.5 text-sm font-medium transition-colors hover:bg-neutral-50"

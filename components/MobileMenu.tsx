@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
 
 import type { MegaMenuConfig } from "@/components/MegaMenu"
+import { isValidRoute } from "@/lib/valid-routes"
 
 type MobileNavItem =
   | {
@@ -224,6 +225,15 @@ export function MobileMenu() {
               <ul className="space-y-1">
                 {mobileItems.map((item) => {
                   if (item.type === "link") {
+                    if (!isValidRoute(item.href)) {
+                      return (
+                        <li key={item.id}>
+                          <span className="flex cursor-default items-center justify-between rounded-xl px-3 py-2 text-sm font-medium text-neutral-400">
+                            <span>{item.label}</span>
+                          </span>
+                        </li>
+                      )
+                    }
                     return (
                       <li key={item.id}>
                         <Link
@@ -272,18 +282,24 @@ export function MobileMenu() {
                               <ul className="space-y-1">
                                 {section.items.map((subItem) => (
                                   <li key={subItem.href}>
-                                    <Link
-                                      href={subItem.href}
-                                      onClick={closeMenu}
-                                      className={[
-                                        "block rounded-lg px-2 py-1 text-[13px]",
-                                        isActive(subItem.href)
-                                          ? "bg-neutral-900 text-white"
-                                          : "text-neutral-800 hover:bg-neutral-100",
-                                      ].join(" ")}
-                                    >
-                                      {subItem.label}
-                                    </Link>
+                                    {isValidRoute(subItem.href) ? (
+                                      <Link
+                                        href={subItem.href}
+                                        onClick={closeMenu}
+                                        className={[
+                                          "block rounded-lg px-2 py-1 text-[13px]",
+                                          isActive(subItem.href)
+                                            ? "bg-neutral-900 text-white"
+                                            : "text-neutral-800 hover:bg-neutral-100",
+                                        ].join(" ")}
+                                      >
+                                        {subItem.label}
+                                      </Link>
+                                    ) : (
+                                      <span className="block cursor-default rounded-lg px-2 py-1 text-[13px] text-neutral-400">
+                                        {subItem.label}
+                                      </span>
+                                    )}
                                   </li>
                                 ))}
                               </ul>
@@ -291,13 +307,19 @@ export function MobileMenu() {
                           ))}
                           {item.config.footerLink && (
                             <div className="pt-1">
-                              <Link
-                                href={item.config.footerLink.href}
-                                onClick={closeMenu}
-                                className="block text-[12px] font-medium text-neutral-700 underline underline-offset-4"
-                              >
-                                {item.config.footerLink.label}
-                              </Link>
+                              {isValidRoute(item.config.footerLink.href) ? (
+                                <Link
+                                  href={item.config.footerLink.href}
+                                  onClick={closeMenu}
+                                  className="block text-[12px] font-medium text-neutral-700 underline underline-offset-4"
+                                >
+                                  {item.config.footerLink.label}
+                                </Link>
+                              ) : (
+                                <span className="block cursor-default text-[12px] font-medium text-neutral-400">
+                                  {item.config.footerLink.label}
+                                </span>
+                              )}
                             </div>
                           )}
                         </div>

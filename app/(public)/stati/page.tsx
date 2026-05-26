@@ -1,6 +1,7 @@
 import Link from "next/link"
 
 import { MediaPlaceholder } from "@/components/MediaPlaceholder"
+import { isValidRoute } from "@/lib/valid-routes"
 
 export default function ArticlesPage() {
   const articles = [
@@ -71,12 +72,18 @@ export default function ArticlesPage() {
                   </header>
                   <p className="mb-4 text-sm text-neutral-700">{article.excerpt}</p>
                   <div className="mt-auto flex flex-wrap gap-2">
-                    <Link
-                      href={`/stati/${article.slug}`}
-                      className="inline-flex items-center justify-center rounded-lg border border-neutral-200 bg-white px-4 py-2 text-xs font-medium transition-colors hover:bg-neutral-50"
-                    >
-                      Читать статью
-                    </Link>
+                    {isValidRoute(`/stati/${article.slug}`) ? (
+                      <Link
+                        href={`/stati/${article.slug}`}
+                        className="inline-flex items-center justify-center rounded-lg border border-neutral-200 bg-white px-4 py-2 text-xs font-medium transition-colors hover:bg-neutral-50"
+                      >
+                        Читать статью
+                      </Link>
+                    ) : (
+                      <span className="inline-flex cursor-default items-center justify-center rounded-lg border border-neutral-200 bg-white px-4 py-2 text-xs font-medium text-neutral-400">
+                        Читать статью
+                      </span>
+                    )}
                     {article.tag === "Беременность" && (
                       <Link
                         href="/zapis?direction=beremennost"

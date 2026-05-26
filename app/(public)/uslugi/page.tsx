@@ -4,6 +4,8 @@ import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import { useState, Suspense } from "react"
 
+import { isValidRoute } from "@/lib/valid-routes"
+
 function ServicesPageContent() {
   const searchParams = useSearchParams()
   const activeDirection = searchParams.get("direction") || "all"
@@ -164,12 +166,18 @@ function ServicesPageContent() {
                       </div>
                     </div>
                     <div className="flex flex-wrap gap-2">
-                      <Link
-                        href={`/uslugi/${service.slug}`}
-                        className="inline-flex items-center justify-center rounded-xl border border-neutral-200 bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-neutral-50"
-                      >
-                        Подробнее
-                      </Link>
+                      {isValidRoute(`/uslugi/${service.slug}`) ? (
+                        <Link
+                          href={`/uslugi/${service.slug}`}
+                          className="inline-flex items-center justify-center rounded-xl border border-neutral-200 bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-neutral-50"
+                        >
+                          Подробнее
+                        </Link>
+                      ) : (
+                        <span className="inline-flex cursor-default items-center justify-center rounded-xl border border-neutral-200 bg-white px-4 py-2 text-sm font-medium text-neutral-400">
+                          Подробнее
+                        </span>
+                      )}
                       <Link
                         href={`/zapis?service=${service.slug}`}
                         className="inline-flex items-center justify-center rounded-xl border border-neutral-900 bg-neutral-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
