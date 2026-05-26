@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "export": "NEXT_EXPORT=true mv app/api app/_api_backup 2>/dev/null || true && mv app/'(admin)' app/_admin_backup 2>/dev/null || true && NEXT_EXPORT=true next build && mv app/_api_backup app/api 2>/dev/null || true && mv app/_admin_backup app/'(admin)' 2>/dev/null || true",
-    "deploy": "npm run export && gh-pages -d out",
+    "deploy": "GITHUB_PAGES=true npm run export && gh-pages -d out",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:studio": "prisma studio",

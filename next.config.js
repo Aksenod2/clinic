@@ -1,12 +1,15 @@
 /** @type {import('next').NextConfig} */
 const isExport = process.env.NEXT_EXPORT === 'true'
+const isGithubPages = process.env.GITHUB_PAGES === 'true'
 
 const nextConfig = {
   ...(isExport && {
     output: 'export',
-    basePath: '/clinic',
-    assetPrefix: '/clinic',
     trailingSlash: true,
+    ...(isGithubPages && {
+      basePath: '/clinic',
+      assetPrefix: '/clinic',
+    }),
   }),
   images: {
     ...(isExport && { unoptimized: true }),
