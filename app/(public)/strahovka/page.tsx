@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 import { MediaPlaceholder } from "@/components/MediaPlaceholder"
 
 export default function InsurancePage() {
@@ -9,9 +11,9 @@ export default function InsurancePage() {
           <nav className="mb-6 text-sm text-neutral-500" aria-label="Хлебные крошки">
             <ol className="flex flex-wrap gap-2">
               <li className="flex items-center gap-2">
-                <a href="/" className="underline underline-offset-2">
+                <Link href="/" className="underline underline-offset-2">
                   Главная
-                </a>
+                </Link>
                 <span>/</span>
               </li>
               <li aria-current="page" className="text-neutral-800">
@@ -125,21 +127,21 @@ export default function InsurancePage() {
             <h2 className="mb-3 text-2xl font-semibold">Полезные разделы</h2>
             <ul className="space-y-2 text-neutral-700">
               <li>
-                <a
+                <Link
                   href="/oms"
                   className="font-medium text-neutral-900 underline underline-offset-2"
                 >
                   Документация ОМС
-                </a>{" "}
+                </Link>{" "}
                 — подробная информация о работе по полису обязательного медицинского страхования.
               </li>
               <li>
-                <a
+                <Link
                   href="/vozvrat-naloga"
                   className="font-medium text-neutral-900 underline underline-offset-2"
                 >
                   Возврат налога за лечение
-                </a>{" "}
+                </Link>{" "}
                 — базовая инструкция, как оформить социальный налоговый вычет с оплаты лечения.
               </li>
             </ul>

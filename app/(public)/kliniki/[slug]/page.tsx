@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 import { MediaPlaceholder } from "@/components/MediaPlaceholder"
 
 const VALID_DOCTOR_SLUGS = new Set(["akusher-ginekolog-1", "akusher-ginekolog-2"])
@@ -27,9 +29,9 @@ export default async function ClinicPage({ params }: PageProps) {
             <h1 className="mb-4 text-3xl font-semibold">Клиника не найдена</h1>
             <p className="text-sm text-neutral-600">
               Информация по запрошенному филиалу будет добавлена позже. Вы можете выбрать другой филиал на странице{" "}
-              <a href="/kliniki" className="underline underline-offset-2">
+              <Link href="/kliniki" className="underline underline-offset-2">
                 «Наши клиники»
-              </a>
+              </Link>
               .
             </p>
           </div>
@@ -45,15 +47,15 @@ export default async function ClinicPage({ params }: PageProps) {
           <nav className="mb-6 text-sm text-neutral-500" aria-label="Хлебные крошки">
             <ol className="flex flex-wrap gap-2">
               <li className="flex items-center gap-2">
-                <a href="/" className="underline underline-offset-2">
+                <Link href="/" className="underline underline-offset-2">
                   Главная
-                </a>
+                </Link>
                 <span>/</span>
               </li>
               <li className="flex items-center gap-2">
-                <a href="/kliniki" className="underline underline-offset-2">
+                <Link href="/kliniki" className="underline underline-offset-2">
                   Наши клиники
-                </a>
+                </Link>
                 <span>/</span>
               </li>
               <li aria-current="page" className="text-neutral-800">
@@ -99,18 +101,18 @@ export default async function ClinicPage({ params }: PageProps) {
                 </div>
 
                 <div className="flex flex-wrap gap-3">
-                  <a
+                  <Link
                     href={`/zapis?clinic=${params.slug}`}
                     className="inline-flex items-center justify-center rounded-xl border border-neutral-900 bg-neutral-900 px-6 py-3 text-base font-medium text-white transition-colors hover:bg-neutral-800"
                   >
                     Записаться сюда
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href={`/napravleniya/beremennost`}
                     className="inline-flex items-center justify-center rounded-xl border border-neutral-200 bg-white px-6 py-3 text-base font-medium transition-colors hover:bg-neutral-50"
                   >
                     Ведение беременности в филиале
-                  </a>
+                  </Link>
                 </div>
               </div>
 
@@ -139,14 +141,14 @@ export default async function ClinicPage({ params }: PageProps) {
 
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {clinicData.directions.map((direction) => (
-                <a
+                <Link
                   key={direction.slug}
                   href={`/napravleniya/${direction.slug}`}
                   className="block rounded-xl border border-neutral-200 bg-white p-4 text-sm transition-colors hover:border-neutral-300 hover:bg-neutral-50"
                 >
                   <div className="mb-1 text-base font-semibold">{direction.title}</div>
                   <div className="text-neutral-600">{direction.description}</div>
-                </a>
+                </Link>
               ))}
             </div>
           </section>
@@ -170,12 +172,12 @@ export default async function ClinicPage({ params }: PageProps) {
                     <div className="font-semibold">{doctor.name}</div>
                     <div className="text-xs text-neutral-600">{doctor.specialty}</div>
                     {VALID_DOCTOR_SLUGS.has(doctor.slug) ? (
-                      <a
+                      <Link
                         href={`/vrachi/${doctor.slug}`}
                         className="mt-1 inline-flex w-fit items-center justify-center rounded-lg border border-neutral-200 bg-neutral-50 px-3 py-1.5 text-xs transition-colors hover:bg-neutral-100"
                       >
                         Профиль врача
-                      </a>
+                      </Link>
                     ) : (
                       <span className="mt-1 inline-flex w-fit items-center justify-center rounded-lg border border-neutral-200 bg-neutral-50 px-3 py-1.5 text-xs text-neutral-400">
                         Профиль врача

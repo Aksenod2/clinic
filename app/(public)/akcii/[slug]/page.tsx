@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 interface PageProps {
   params: {
     slug: string
@@ -22,9 +24,9 @@ export default async function PromotionPage({ params }: PageProps) {
             <h1 className="mb-4 text-3xl font-semibold">Акция: {params.slug}</h1>
             <p className="text-sm text-neutral-600">
               Подробная страница акции будет добавлена позже. Вы можете вернуться в раздел{" "}
-              <a href="/akcii" className="underline underline-offset-2">
+              <Link href="/akcii" className="underline underline-offset-2">
                 «Акции»
-              </a>
+              </Link>
               .
             </p>
           </div>
@@ -40,15 +42,15 @@ export default async function PromotionPage({ params }: PageProps) {
           <nav className="mb-6 text-sm text-neutral-500" aria-label="Хлебные крошки">
             <ol className="flex flex-wrap gap-2">
               <li className="flex items-center gap-2">
-                <a href="/" className="underline underline-offset-2">
+                <Link href="/" className="underline underline-offset-2">
                   Главная
-                </a>
+                </Link>
                 <span>/</span>
               </li>
               <li className="flex items-center gap-2">
-                <a href="/akcii" className="underline underline-offset-2">
+                <Link href="/akcii" className="underline underline-offset-2">
                   Акции
-                </a>
+                </Link>
                 <span>/</span>
               </li>
               <li aria-current="page" className="text-neutral-800">
@@ -74,18 +76,18 @@ export default async function PromotionPage({ params }: PageProps) {
                 </div>
 
                 <div className="flex flex-wrap gap-3">
-                  <a
+                  <Link
                     href={`/zapis?promotion=${params.slug}`}
                     className="inline-flex items-center justify-center rounded-xl border border-neutral-900 bg-neutral-900 px-6 py-3 text-base font-medium text-white transition-colors hover:bg-neutral-800"
                   >
                     Записаться по акции
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href="/zapis"
                     className="inline-flex items-center justify-center rounded-xl border border-neutral-200 bg-white px-6 py-3 text-base font-medium transition-colors hover:bg-neutral-50"
                   >
                     Записаться без акции
-                  </a>
+                  </Link>
                 </div>
               </div>
 

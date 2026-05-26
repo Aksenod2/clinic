@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 export default function ClinicsPage() {
   const clinics = [
     {
@@ -42,9 +44,9 @@ export default function ClinicsPage() {
           <nav className="mb-6 text-sm text-neutral-500" aria-label="Хлебные крошки">
             <ol className="flex flex-wrap gap-2">
               <li className="flex items-center gap-2">
-                <a href="/" className="underline underline-offset-2">
+                <Link href="/" className="underline underline-offset-2">
                   Главная
-                </a>
+                </Link>
                 <span>/</span>
               </li>
               <li aria-current="page" className="text-neutral-800">
@@ -104,18 +106,18 @@ export default function ClinicsPage() {
                   </div>
 
                   <div className="mt-auto flex flex-wrap gap-2">
-                    <a
+                    <Link
                       href={`/kliniki/${clinic.slug}`}
                       className="inline-flex flex-1 items-center justify-center rounded-lg border border-neutral-200 bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-neutral-50"
                     >
                       Подробнее о филиале
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                       href={`/zapis?clinic=${clinic.slug}`}
                       className="inline-flex flex-1 items-center justify-center rounded-lg border border-neutral-900 bg-neutral-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
                     >
                       Записаться сюда
-                    </a>
+                    </Link>
                   </div>
                 </article>
               ))}

@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { notFound } from "next/navigation"
 import { MediaPlaceholder } from "@/components/MediaPlaceholder"
 import { getSymptomBySlug } from "@/lib/symptoms-config"
@@ -102,15 +103,15 @@ export default async function DirectionPage({ params }: PageProps) {
           <nav className="mb-6 text-sm text-neutral-500" aria-label="Хлебные крошки">
             <ol className="flex flex-wrap gap-2">
               <li className="flex items-center gap-2">
-                <a href="/" className="underline underline-offset-2">
+                <Link href="/" className="underline underline-offset-2">
                   Главная
-                </a>
+                </Link>
                 <span>/</span>
               </li>
               <li className="flex items-center gap-2">
-                <a href="/napravleniya" className="underline underline-offset-2">
+                <Link href="/napravleniya" className="underline underline-offset-2">
                   Направления
-                </a>
+                </Link>
                 <span>/</span>
               </li>
               <li aria-current="page" className="text-neutral-800">
@@ -130,18 +131,18 @@ export default async function DirectionPage({ params }: PageProps) {
                   {directionData.description}
                 </p>
                 <div className="flex flex-wrap gap-3">
-                  <a
+                  <Link
                     href={`/zapis?direction=${params.slug}`}
                     className="inline-flex items-center justify-center rounded-xl border border-neutral-900 bg-neutral-900 px-6 py-3 text-base font-medium text-white transition-colors hover:bg-neutral-800"
                   >
                     Записаться на приём
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href={`/uslugi?direction=${params.slug}`}
                     className="inline-flex items-center justify-center rounded-xl border border-neutral-200 bg-white px-6 py-3 text-base font-medium transition-colors hover:bg-neutral-50"
                   >
                     Смотреть услуги
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="flex items-center justify-center">
@@ -201,18 +202,18 @@ export default async function DirectionPage({ params }: PageProps) {
                   <p className="mb-3 text-sm text-neutral-600">{service.description}</p>
                   <div className="mb-4 text-sm font-semibold text-neutral-900">{service.price}</div>
                   <div className="flex flex-wrap gap-2">
-                    <a
+                    <Link
                       href={`/uslugi/${service.slug}`}
                       className="inline-flex items-center justify-center rounded-xl border border-neutral-200 bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-neutral-50"
                     >
                       Подробнее
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                       href={`/zapis?service=${service.slug}`}
                       className="inline-flex items-center justify-center rounded-xl border border-neutral-900 bg-neutral-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
                     >
                       Записаться
-                    </a>
+                    </Link>
                   </div>
                 </article>
               ))}
@@ -233,13 +234,13 @@ export default async function DirectionPage({ params }: PageProps) {
                 const exists = Boolean(getSymptomBySlug(symptom.slug))
                 if (exists) {
                   return (
-                    <a
+                    <Link
                       key={symptom.slug}
                       href={`/chto-my-lechim/${symptom.slug}`}
                       className="block rounded-xl border border-neutral-200 bg-white p-4 text-sm transition-colors hover:border-neutral-300 hover:bg-neutral-50"
                     >
                       <div className="font-semibold">{symptom.title}</div>
-                    </a>
+                    </Link>
                   )
                 }
                 return (
@@ -287,24 +288,24 @@ export default async function DirectionPage({ params }: PageProps) {
                         </span>
                       ))}
                     </div>
-                    <a
+                    <Link
                       href={`/vrachi/${doctor.name.toLowerCase().replace(/\s+/g, "-")}`}
                       className="mt-1 inline-flex w-fit items-center justify-center rounded-lg border border-neutral-200 bg-neutral-50 px-3 py-1.5 text-xs transition-colors hover:bg-neutral-100"
                     >
                       Профиль врача
-                    </a>
+                    </Link>
                   </div>
                 </article>
               ))}
             </div>
 
             <div className="mt-4">
-              <a
+              <Link
                 href="/vrachi"
                 className="text-sm text-neutral-600 underline underline-offset-4"
               >
                 Все врачи по направлению →
-              </a>
+              </Link>
             </div>
           </section>
 
@@ -337,18 +338,18 @@ export default async function DirectionPage({ params }: PageProps) {
                       className="mt-2 h-28"
                     />
                     <div className="mt-2 flex gap-2">
-                      <a
+                      <Link
                         href={`/kliniki/${branch.name.toLowerCase()}`}
                         className="inline-flex flex-1 items-center justify-center rounded-lg border border-neutral-200 bg-neutral-50 px-3 py-1.5 text-xs transition-colors hover:bg-neutral-100"
                       >
                         Как добраться
-                      </a>
-                      <a
+                      </Link>
+                      <Link
                         href={`/zapis?direction=${params.slug}&clinic=${branch.name.toLowerCase()}`}
                         className="inline-flex flex-1 items-center justify-center rounded-lg border border-neutral-900 bg-neutral-900 px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-neutral-800"
                       >
                         Записаться сюда
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </article>
@@ -367,12 +368,12 @@ export default async function DirectionPage({ params }: PageProps) {
                 <p className="mb-4 text-base text-neutral-700">
                   Выберите удобное время и филиал. Наши администраторы свяжутся с вами для подтверждения записи.
                 </p>
-                <a
+                <Link
                   href={`/zapis?direction=${params.slug}`}
                   className="inline-flex items-center justify-center rounded-xl border border-neutral-900 bg-neutral-900 px-6 py-3 text-base font-medium text-white transition-colors hover:bg-neutral-800"
                 >
                   Записаться на приём
-                </a>
+                </Link>
               </div>
               <div className="flex items-center justify-center">
                 <div className="rounded-xl border border-neutral-200 bg-white p-4 text-sm">

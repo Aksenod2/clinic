@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 import { MediaPlaceholder } from "@/components/MediaPlaceholder"
 
 interface PageProps {
@@ -29,15 +31,15 @@ export default async function ServicePage({ params }: PageProps) {
           <nav className="mb-6 text-sm text-neutral-500" aria-label="Хлебные крошки">
             <ol className="flex flex-wrap gap-2">
               <li className="flex items-center gap-2">
-                <a href="/" className="underline underline-offset-2">
+                <Link href="/" className="underline underline-offset-2">
                   Главная
-                </a>
+                </Link>
                 <span>/</span>
               </li>
               <li className="flex items-center gap-2">
-                <a href="/uslugi" className="underline underline-offset-2">
+                <Link href="/uslugi" className="underline underline-offset-2">
                   Услуги
-                </a>
+                </Link>
                 <span>/</span>
               </li>
               <li aria-current="page" className="text-neutral-800">
@@ -517,9 +519,9 @@ export default async function ServicePage({ params }: PageProps) {
             </div>
 
             <div className="mt-3">
-              <a href="/vrachi" className="text-xs text-neutral-600 underline underline-offset-4">
+              <Link href="/vrachi" className="text-xs text-neutral-600 underline underline-offset-4">
                 Все врачи по услуге →
-              </a>
+              </Link>
             </div>
           </section>
 

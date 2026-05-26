@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 import { MediaPlaceholder } from "@/components/MediaPlaceholder"
 
 export default function DoctorsPage() {
@@ -52,9 +54,9 @@ export default function DoctorsPage() {
           <nav className="mb-6 text-sm text-neutral-500" aria-label="Хлебные крошки">
             <ol className="flex flex-wrap gap-2">
               <li className="flex items-center gap-2">
-                <a href="/" className="underline underline-offset-2">
+                <Link href="/" className="underline underline-offset-2">
                   Главная
-                </a>
+                </Link>
                 <span>/</span>
               </li>
               <li aria-current="page" className="text-neutral-800">
@@ -105,18 +107,18 @@ export default function DoctorsPage() {
                       ))}
                     </div>
                     <div className="mt-2 flex flex-wrap gap-2">
-                      <a
+                      <Link
                         href={`/vrachi/${doctor.slug}`}
                         className="inline-flex flex-1 items-center justify-center rounded-lg border border-neutral-200 bg-neutral-50 px-3 py-1.5 text-xs font-medium transition-colors hover:bg-neutral-100"
                       >
                         Профиль врача
-                      </a>
-                      <a
+                      </Link>
+                      <Link
                         href={`/zapis?doctor=${doctor.slug}`}
                         className="inline-flex flex-1 items-center justify-center rounded-lg border border-neutral-900 bg-neutral-900 px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-neutral-800"
                       >
                         Записаться
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </article>
@@ -164,12 +166,12 @@ export default function DoctorsPage() {
                         </span>
                       )}
                     </div>
-                    <a
+                    <Link
                       href={`/vrachi/${doctor.slug}`}
                       className="mt-1 inline-flex w-fit items-center justify-center rounded-lg border border-neutral-200 bg-neutral-50 px-3 py-1.5 text-xs transition-colors hover:bg-neutral-100"
                     >
                       Профиль врача
-                    </a>
+                    </Link>
                   </div>
                 </article>
               ))}

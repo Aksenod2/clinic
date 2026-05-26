@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 import { MediaPlaceholder } from "@/components/MediaPlaceholder"
 
 export default function ArticlesPage() {
@@ -32,9 +34,9 @@ export default function ArticlesPage() {
           <nav className="mb-6 text-sm text-neutral-500" aria-label="Хлебные крошки">
             <ol className="flex flex-wrap gap-2">
               <li className="flex items-center gap-2">
-                <a href="/" className="underline underline-offset-2">
+                <Link href="/" className="underline underline-offset-2">
                   Главная
-                </a>
+                </Link>
                 <span>/</span>
               </li>
               <li aria-current="page" className="text-neutral-800">
@@ -69,19 +71,19 @@ export default function ArticlesPage() {
                   </header>
                   <p className="mb-4 text-sm text-neutral-700">{article.excerpt}</p>
                   <div className="mt-auto flex flex-wrap gap-2">
-                    <a
+                    <Link
                       href={`/stati/${article.slug}`}
                       className="inline-flex items-center justify-center rounded-lg border border-neutral-200 bg-white px-4 py-2 text-xs font-medium transition-colors hover:bg-neutral-50"
                     >
                       Читать статью
-                    </a>
+                    </Link>
                     {article.tag === "Беременность" && (
-                      <a
+                      <Link
                         href="/zapis?direction=beremennost"
                         className="inline-flex items-center justify-center rounded-lg border border-neutral-900 bg-neutral-900 px-4 py-2 text-xs font-medium text-white transition-colors hover:bg-neutral-800"
                       >
                         Записаться по теме
-                      </a>
+                      </Link>
                     )}
                   </div>
                 </article>
