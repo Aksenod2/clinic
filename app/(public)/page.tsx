@@ -387,18 +387,21 @@ export default function HomePage() {
             <div className="grid gap-4 md:grid-cols-3">
               {[
                 {
+                  slug: "butovo",
                   name: "Бутово",
                   address: "Бутово, рядом с метро (точный адрес будет указан здесь)",
                   phone: "+7 (999) 123-45-67",
                   note: "Удобен для семей с детьми, есть педиатрическое направление",
                 },
                 {
+                  slug: "arbatskaya",
                   name: "Арбатская",
                   address: "Центр, район Арбат (точный адрес будет указан здесь)",
                   phone: "+7 (999) 123-45-68",
                   note: "Удобен для рабочих в центре, расширенный график приёма",
                 },
                 {
+                  slug: "balashiha",
                   name: "Балашиха",
                   address: "Балашиха, район проживания (точный адрес будет указан здесь)",
                   phone: "+7 (999) 123-45-69",
@@ -406,7 +409,7 @@ export default function HomePage() {
                 },
               ].map((clinic) => (
                 <article
-                  key={clinic.name}
+                  key={clinic.slug}
                   className="rounded-xl border border-neutral-200 bg-white p-4"
                 >
                   <div className="mb-2 text-lg font-semibold">{clinic.name}</div>
@@ -416,7 +419,7 @@ export default function HomePage() {
                   ) : null}
                   <div className="mb-3 text-sm text-neutral-700">{clinic.phone}</div>
                   <Link
-                    href={`/kliniki/${clinic.name.toLowerCase()}`}
+                    href={`/kliniki/${clinic.slug}`}
                     className="text-sm text-neutral-600 underline underline-offset-2"
                   >
                     Подробнее о филиале →
