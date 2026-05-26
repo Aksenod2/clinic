@@ -228,7 +228,7 @@ export function MobileMenu() {
                     if (!isValidRoute(item.href)) {
                       return (
                         <li key={item.id}>
-                          <span className="flex cursor-default items-center justify-between rounded-xl px-3 py-2 text-sm font-medium text-neutral-400">
+                          <span className="flex cursor-not-allowed opacity-60 items-center justify-between rounded-xl px-3 py-2 text-sm font-medium text-neutral-400">
                             <span>{item.label}</span>
                           </span>
                         </li>
@@ -296,7 +296,7 @@ export function MobileMenu() {
                                         {subItem.label}
                                       </Link>
                                     ) : (
-                                      <span className="block cursor-default rounded-lg px-2 py-1 text-[13px] text-neutral-400">
+                                      <span className="block cursor-not-allowed opacity-60 rounded-lg px-2 py-1 text-[13px] text-neutral-400">
                                         {subItem.label}
                                       </span>
                                     )}
@@ -316,7 +316,7 @@ export function MobileMenu() {
                                   {item.config.footerLink.label}
                                 </Link>
                               ) : (
-                                <span className="block cursor-default text-[12px] font-medium text-neutral-400">
+                                <span className="block cursor-not-allowed opacity-60 text-[12px] font-medium text-neutral-400">
                                   {item.config.footerLink.label}
                                 </span>
                               )}

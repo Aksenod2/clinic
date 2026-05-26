@@ -70,7 +70,7 @@ export function MegaMenu({ config, isOpen, onClose }: MegaMenuProps) {
                         {inner}
                       </Link>
                     ) : (
-                      <span className="block cursor-default rounded-lg px-3 py-2 text-neutral-400">
+                      <span className="block cursor-not-allowed opacity-60 rounded-lg px-3 py-2 text-neutral-400">
                         {inner}
                       </span>
                     )}
@@ -92,7 +92,7 @@ export function MegaMenu({ config, isOpen, onClose }: MegaMenuProps) {
               {config.footerLink.label}
             </Link>
           ) : (
-            <span className="cursor-default text-xs font-medium text-neutral-400">
+            <span className="cursor-not-allowed opacity-60 text-xs font-medium text-neutral-400">
               {config.footerLink.label}
             </span>
           )}

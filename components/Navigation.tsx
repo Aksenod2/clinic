@@ -339,7 +339,7 @@ export function Navigation() {
             return (
               <span
                 key={item.id}
-                className="cursor-default rounded-full px-3 py-2 text-sm font-medium text-neutral-400"
+                className="cursor-not-allowed opacity-60 rounded-full px-3 py-2 text-sm font-medium text-neutral-400"
               >
                 {item.label}
               </span>

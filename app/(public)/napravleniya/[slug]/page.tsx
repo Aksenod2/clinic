@@ -210,7 +210,7 @@ export default async function DirectionPage({ params }: PageProps) {
                         Подробнее
                       </Link>
                     ) : (
-                      <span className="inline-flex cursor-default items-center justify-center rounded-xl border border-neutral-200 bg-white px-4 py-2 text-sm font-medium text-neutral-400">
+                      <span className="inline-flex cursor-not-allowed opacity-60 items-center justify-center rounded-xl border border-neutral-200 bg-white px-4 py-2 text-sm font-medium text-neutral-400">
                         Подробнее
                       </span>
                     )}

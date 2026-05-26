@@ -199,7 +199,7 @@ export default async function SymptomPage({ params }: PageProps) {
                         Подробнее
                       </Link>
                     ) : (
-                      <span className="inline-flex cursor-default items-center justify-center rounded-xl border border-neutral-200 bg-white px-4 py-2 text-xs font-medium text-neutral-400">
+                      <span className="inline-flex cursor-not-allowed opacity-60 items-center justify-center rounded-xl border border-neutral-200 bg-white px-4 py-2 text-xs font-medium text-neutral-400">
                         Подробнее
                       </span>
                     )}
@@ -241,7 +241,7 @@ export default async function SymptomPage({ params }: PageProps) {
                         Профиль врача
                       </Link>
                     ) : (
-                      <span className="mt-1 inline-flex w-fit cursor-default items-center justify-center rounded-lg border border-neutral-200 bg-neutral-50 px-3 py-1.5 text-xs text-neutral-400">
+                      <span className="mt-1 inline-flex w-fit cursor-not-allowed opacity-60 items-center justify-center rounded-lg border border-neutral-200 bg-neutral-50 px-3 py-1.5 text-xs text-neutral-400">
                         Профиль врача
                       </span>
                     )}
