@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { MediaPlaceholder } from "@/components/MediaPlaceholder"
-import { getSymptomBySlug } from "@/lib/symptoms-config"
+import { isValidRoute } from "@/lib/valid-routes"
 
 interface PageProps {
   params: {
@@ -202,12 +202,18 @@ export default async function DirectionPage({ params }: PageProps) {
                   <p className="mb-3 text-sm text-neutral-600">{service.description}</p>
                   <div className="mb-4 text-sm font-semibold text-neutral-900">{service.price}</div>
                   <div className="flex flex-wrap gap-2">
-                    <Link
-                      href={`/uslugi/${service.slug}`}
-                      className="inline-flex items-center justify-center rounded-xl border border-neutral-200 bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-neutral-50"
-                    >
-                      Подробнее
-                    </Link>
+                    {isValidRoute(`/uslugi/${service.slug}`) ? (
+                      <Link
+                        href={`/uslugi/${service.slug}`}
+                        className="inline-flex items-center justify-center rounded-xl border border-neutral-200 bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-neutral-50"
+                      >
+                        Подробнее
+                      </Link>
+                    ) : (
+                      <span className="inline-flex cursor-default items-center justify-center rounded-xl border border-neutral-200 bg-white px-4 py-2 text-sm font-medium text-neutral-400">
+                        Подробнее
+                      </span>
+                    )}
                     <Link
                       href={`/zapis?service=${service.slug}`}
                       className="inline-flex items-center justify-center rounded-xl border border-neutral-900 bg-neutral-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
@@ -230,20 +236,16 @@ export default async function DirectionPage({ params }: PageProps) {
             </header>
 
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-              {directionData.symptoms.map((symptom: any) => {
-                const exists = Boolean(getSymptomBySlug(symptom.slug))
-                if (exists) {
-                  return (
-                    <Link
-                      key={symptom.slug}
-                      href={`/chto-my-lechim/${symptom.slug}`}
-                      className="block rounded-xl border border-neutral-200 bg-white p-4 text-sm transition-colors hover:border-neutral-300 hover:bg-neutral-50"
-                    >
-                      <div className="font-semibold">{symptom.title}</div>
-                    </Link>
-                  )
-                }
-                return (
+              {directionData.symptoms.map((symptom: any) =>
+                isValidRoute(`/chto-my-lechim/${symptom.slug}`) ? (
+                  <Link
+                    key={symptom.slug}
+                    href={`/chto-my-lechim/${symptom.slug}`}
+                    className="block rounded-xl border border-neutral-200 bg-white p-4 text-sm transition-colors hover:border-neutral-300 hover:bg-neutral-50"
+                  >
+                    <div className="font-semibold">{symptom.title}</div>
+                  </Link>
+                ) : (
                   <div
                     key={symptom.slug}
                     className="block rounded-xl border border-neutral-200 bg-white p-4 text-sm"
@@ -251,7 +253,7 @@ export default async function DirectionPage({ params }: PageProps) {
                     <div className="font-semibold text-neutral-400">{symptom.title}</div>
                   </div>
                 )
-              })}
+              )}
             </div>
           </section>
 

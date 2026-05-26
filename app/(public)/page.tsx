@@ -1,5 +1,6 @@
 import { directions } from "@/lib/directions"
 import { getAllSymptoms } from "@/lib/symptoms-config"
+import { isValidRoute } from "@/lib/valid-routes"
 import Link from "next/link"
 import { MediaPlaceholder } from "@/components/MediaPlaceholder"
 
@@ -88,16 +89,22 @@ export default function HomePage() {
                     <div className="text-xs text-neutral-500">{direction.servicesCount}</div>
                   </div>
                   <div className="mt-4 flex flex-wrap gap-2">
-                    <Link
-                      href={`/napravleniya/${direction.slug}`}
-                      className={`inline-flex flex-1 items-center justify-center rounded-xl border px-3 py-2 text-xs font-medium transition-colors ${
-                        direction.isHighlighted
-                          ? "border-neutral-900 bg-neutral-900 text-white hover:bg-neutral-800"
-                          : "border-neutral-200 bg-white hover:bg-neutral-50"
-                      }`}
-                    >
-                      Подробнее
-                    </Link>
+                    {isValidRoute(`/napravleniya/${direction.slug}`) ? (
+                      <Link
+                        href={`/napravleniya/${direction.slug}`}
+                        className={`inline-flex flex-1 items-center justify-center rounded-xl border px-3 py-2 text-xs font-medium transition-colors ${
+                          direction.isHighlighted
+                            ? "border-neutral-900 bg-neutral-900 text-white hover:bg-neutral-800"
+                            : "border-neutral-200 bg-white hover:bg-neutral-50"
+                        }`}
+                      >
+                        Подробнее
+                      </Link>
+                    ) : (
+                      <span className="inline-flex flex-1 cursor-default items-center justify-center rounded-xl border border-neutral-200 bg-white px-3 py-2 text-xs font-medium text-neutral-400">
+                        Подробнее
+                      </span>
+                    )}
                     <Link
                       href={`/uslugi?direction=${direction.slug}`}
                       className="inline-flex flex-1 items-center justify-center rounded-xl border border-neutral-200 bg-white px-3 py-2 text-xs font-medium text-neutral-800 transition-colors hover:bg-neutral-50"
@@ -234,7 +241,7 @@ export default function HomePage() {
                   clinics: ["Бутово", "Арбатская"],
                 },
                 {
-                  slug: "ginekolog-1",
+                  slug: "akusher-ginekolog-2",
                   name: "ФИО врача",
                   specialty: "Акушер‑гинеколог",
                   experience: "15 лет",
@@ -242,7 +249,7 @@ export default function HomePage() {
                   clinics: ["Арбатская"],
                 },
                 {
-                  slug: "pediatr-1",
+                  slug: "akusher-ginekolog-1",
                   name: "ФИО врача",
                   specialty: "Педиатр",
                   experience: "8 лет",

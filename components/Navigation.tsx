@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 
 import { MegaMenu, type MegaMenuConfig } from "@/components/MegaMenu"
+import { isValidRoute } from "@/lib/valid-routes"
 
 type NavItemBase = {
   id: string
@@ -334,6 +335,16 @@ export function Navigation() {
     >
       {navItems.map((item) => {
         if (item.type === "link") {
+          if (!isValidRoute(item.href)) {
+            return (
+              <span
+                key={item.id}
+                className="cursor-default rounded-full px-3 py-2 text-sm font-medium text-neutral-400"
+              >
+                {item.label}
+              </span>
+            )
+          }
           return (
             <Link
               key={item.id}

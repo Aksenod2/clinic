@@ -1,5 +1,7 @@
 import Link from "next/link"
 
+import { isValidRoute } from "@/lib/valid-routes"
+
 type MegaMenuItem = {
   label: string
   href: string
@@ -47,23 +49,34 @@ export function MegaMenu({ config, isOpen, onClose }: MegaMenuProps) {
               </div>
             )}
             <ul className="space-y-2">
-              {section.items.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="block rounded-lg px-3 py-2 hover:bg-neutral-50"
-                  >
-                    <div className="text-sm font-medium text-neutral-900">
-                      {item.label}
-                    </div>
+              {section.items.map((item) => {
+                const inner = (
+                  <>
+                    <div className="text-sm font-medium">{item.label}</div>
                     {item.description && (
                       <div className="mt-1 text-xs text-neutral-500">
                         {item.description}
                       </div>
                     )}
-                  </Link>
-                </li>
-              ))}
+                  </>
+                )
+                return (
+                  <li key={item.href}>
+                    {isValidRoute(item.href) ? (
+                      <Link
+                        href={item.href}
+                        className="block rounded-lg px-3 py-2 text-neutral-900 hover:bg-neutral-50"
+                      >
+                        {inner}
+                      </Link>
+                    ) : (
+                      <span className="block cursor-default rounded-lg px-3 py-2 text-neutral-400">
+                        {inner}
+                      </span>
+                    )}
+                  </li>
+                )
+              })}
             </ul>
           </div>
         ))}
@@ -71,12 +84,18 @@ export function MegaMenu({ config, isOpen, onClose }: MegaMenuProps) {
 
       {config.footerLink && (
         <div className="mt-5 border-t border-neutral-100 pt-4 text-right">
-          <Link
-            href={config.footerLink.href}
-            className="text-xs font-medium text-neutral-700 underline underline-offset-4 hover:text-neutral-900"
-          >
-            {config.footerLink.label}
-          </Link>
+          {isValidRoute(config.footerLink.href) ? (
+            <Link
+              href={config.footerLink.href}
+              className="text-xs font-medium text-neutral-700 underline underline-offset-4 hover:text-neutral-900"
+            >
+              {config.footerLink.label}
+            </Link>
+          ) : (
+            <span className="cursor-default text-xs font-medium text-neutral-400">
+              {config.footerLink.label}
+            </span>
+          )}
         </div>
       )}
     </div>

@@ -1,8 +1,7 @@
 import Link from "next/link"
 
 import { MediaPlaceholder } from "@/components/MediaPlaceholder"
-
-const VALID_DOCTOR_SLUGS = new Set(["akusher-ginekolog-1", "akusher-ginekolog-2"])
+import { isValidRoute } from "@/lib/valid-routes"
 
 interface PageProps {
   params: {
@@ -171,7 +170,7 @@ export default async function ClinicPage({ params }: PageProps) {
                   <div className="grid gap-2 p-4 text-sm">
                     <div className="font-semibold">{doctor.name}</div>
                     <div className="text-xs text-neutral-600">{doctor.specialty}</div>
-                    {VALID_DOCTOR_SLUGS.has(doctor.slug) ? (
+                    {isValidRoute(`/vrachi/${doctor.slug}`) ? (
                       <Link
                         href={`/vrachi/${doctor.slug}`}
                         className="mt-1 inline-flex w-fit items-center justify-center rounded-lg border border-neutral-200 bg-neutral-50 px-3 py-1.5 text-xs transition-colors hover:bg-neutral-100"

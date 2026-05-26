@@ -2,6 +2,7 @@ import Link from "next/link"
 
 import { generateSEOMetadata } from "@/lib/seo"
 import { getSymptomBySlug, getAllSymptoms, type SymptomPageData } from "@/lib/symptoms-config"
+import { isValidRoute } from "@/lib/valid-routes"
 import { MediaPlaceholder } from "@/components/MediaPlaceholder"
 
 interface PageProps {
@@ -190,12 +191,18 @@ export default async function SymptomPage({ params }: PageProps) {
                     <span className="font-semibold">{service.price}</span>
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    <Link
-                      href={`/uslugi/${service.slug}`}
-                      className="inline-flex items-center justify-center rounded-xl border border-neutral-200 bg-white px-4 py-2 text-xs font-medium transition-colors hover:bg-neutral-50"
-                    >
-                      Подробнее
-                    </Link>
+                    {isValidRoute(`/uslugi/${service.slug}`) ? (
+                      <Link
+                        href={`/uslugi/${service.slug}`}
+                        className="inline-flex items-center justify-center rounded-xl border border-neutral-200 bg-white px-4 py-2 text-xs font-medium transition-colors hover:bg-neutral-50"
+                      >
+                        Подробнее
+                      </Link>
+                    ) : (
+                      <span className="inline-flex cursor-default items-center justify-center rounded-xl border border-neutral-200 bg-white px-4 py-2 text-xs font-medium text-neutral-400">
+                        Подробнее
+                      </span>
+                    )}
                     <Link
                       href={`/zapis?service=${service.slug}`}
                       className="inline-flex items-center justify-center rounded-xl border border-neutral-900 bg-neutral-900 px-4 py-2 text-xs font-medium text-white transition-colors hover:bg-neutral-800"
@@ -226,12 +233,18 @@ export default async function SymptomPage({ params }: PageProps) {
                   <div className="grid gap-2 p-4 text-sm">
                     <div className="font-semibold">{doctor.name}</div>
                     <div className="text-xs text-neutral-600">{doctor.specialty}</div>
-                    <Link
-                      href={`/vrachi/${doctor.slug}`}
-                      className="mt-1 inline-flex w-fit items-center justify-center rounded-lg border border-neutral-200 bg-neutral-50 px-3 py-1.5 text-xs transition-colors hover:bg-neutral-100"
-                    >
-                      Профиль врача
-                    </Link>
+                    {isValidRoute(`/vrachi/${doctor.slug}`) ? (
+                      <Link
+                        href={`/vrachi/${doctor.slug}`}
+                        className="mt-1 inline-flex w-fit items-center justify-center rounded-lg border border-neutral-200 bg-neutral-50 px-3 py-1.5 text-xs transition-colors hover:bg-neutral-100"
+                      >
+                        Профиль врача
+                      </Link>
+                    ) : (
+                      <span className="mt-1 inline-flex w-fit cursor-default items-center justify-center rounded-lg border border-neutral-200 bg-neutral-50 px-3 py-1.5 text-xs text-neutral-400">
+                        Профиль врача
+                      </span>
+                    )}
                   </div>
                 </article>
               ))}
