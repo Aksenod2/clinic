@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 import { directions } from "@/lib/directions"
 import { MediaPlaceholder } from "@/components/MediaPlaceholder"
 
@@ -17,9 +19,9 @@ export default function DirectionsPage() {
           <nav className="mb-6 text-sm text-neutral-500" aria-label="Хлебные крошки">
             <ol className="flex flex-wrap gap-2">
               <li className="flex items-center gap-2">
-                <a href="/" className="underline underline-offset-2">
+                <Link href="/" className="underline underline-offset-2">
                   Главная
-                </a>
+                </Link>
                 <span>/</span>
               </li>
               <li aria-current="page" className="text-neutral-800">
@@ -76,7 +78,7 @@ export default function DirectionsPage() {
                     </div>
 
                     <div className="flex flex-wrap gap-3">
-                      <a
+                      <Link
                         href={`/napravleniya/${direction.slug}`}
                         className={`inline-flex items-center justify-center rounded-xl border px-5 py-2.5 text-sm font-medium transition-colors ${
                           direction.isHighlighted
@@ -85,13 +87,13 @@ export default function DirectionsPage() {
                         }`}
                       >
                         Подробнее о направлении
-                      </a>
-                      <a
+                      </Link>
+                      <Link
                         href={`/uslugi?direction=${direction.slug}`}
                         className="inline-flex items-center justify-center rounded-xl border border-neutral-200 bg-white px-5 py-2.5 text-sm font-medium transition-colors hover:bg-neutral-50"
                       >
                         Смотреть услуги
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </article>
@@ -105,12 +107,12 @@ export default function DirectionsPage() {
             <p className="mb-4 text-sm text-neutral-600">
               Если вы не уверены, какое направление вам подходит, запишитесь на консультацию — наши врачи помогут определить необходимый объём помощи.
             </p>
-            <a
+            <Link
               href="/zapis"
               className="inline-flex items-center justify-center rounded-xl border border-neutral-900 bg-neutral-900 px-6 py-3 text-base font-medium text-white transition-colors hover:bg-neutral-800"
             >
               Записаться на консультацию
-            </a>
+            </Link>
           </section>
         </div>
       </div>

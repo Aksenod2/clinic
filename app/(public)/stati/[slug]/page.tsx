@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 interface PageProps {
   params: {
     slug: string
@@ -21,9 +23,9 @@ export default async function ArticlePage({ params }: PageProps) {
             <h1 className="mb-4 text-3xl font-semibold">Статья: {params.slug}</h1>
             <p className="text-sm text-neutral-600">
               Страница статьи будет заполнена позже. Вы можете вернуться в раздел{" "}
-              <a href="/stati" className="underline underline-offset-2">
+              <Link href="/stati" className="underline underline-offset-2">
                 «Статьи»
-              </a>
+              </Link>
               .
             </p>
           </div>
@@ -39,15 +41,15 @@ export default async function ArticlePage({ params }: PageProps) {
           <nav className="mb-6 text-sm text-neutral-500" aria-label="Хлебные крошки">
             <ol className="flex flex-wrap gap-2">
               <li className="flex items-center gap-2">
-                <a href="/" className="underline underline-offset-2">
+                <Link href="/" className="underline underline-offset-2">
                   Главная
-                </a>
+                </Link>
                 <span>/</span>
               </li>
               <li className="flex items-center gap-2">
-                <a href="/stati" className="underline underline-offset-2">
+                <Link href="/stati" className="underline underline-offset-2">
                   Статьи
-                </a>
+                </Link>
                 <span>/</span>
               </li>
               <li aria-current="page" className="text-neutral-800">
@@ -88,32 +90,32 @@ export default async function ArticlePage({ params }: PageProps) {
             </p>
             <div className="flex flex-wrap gap-2">
               {article.relatedDirections.map((direction) => (
-                <a
+                <Link
                   key={direction.slug}
                   href={`/napravleniya/${direction.slug}`}
                   className="inline-flex items-center rounded-full border border-neutral-200 bg-white px-4 py-2 text-xs font-medium text-neutral-700 transition-colors hover:bg-neutral-100"
                 >
                   {direction.title}
-                </a>
+                </Link>
               ))}
               {article.relatedServices.map((service) => (
-                <a
+                <Link
                   key={service.slug}
                   href={`/uslugi/${service.slug}`}
                   className="inline-flex items-center rounded-full border border-neutral-200 bg-white px-4 py-2 text-xs font-medium text-neutral-700 transition-colors hover:bg-neutral-100"
                 >
                   {service.title}
-                </a>
+                </Link>
               ))}
             </div>
 
             <div className="mt-4">
-              <a
+              <Link
                 href={`/zapis?direction=beremennost`}
                 className="inline-flex items-center justify-center rounded-xl border border-neutral-900 bg-neutral-900 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
               >
                 Записаться на приём
-              </a>
+              </Link>
             </div>
           </section>
         </div>

@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 export default function PromotionsPage() {
   const promotions = [
     {
@@ -27,9 +29,9 @@ export default function PromotionsPage() {
           <nav className="mb-6 text-sm text-neutral-500" aria-label="Хлебные крошки">
             <ol className="flex flex-wrap gap-2">
               <li className="flex items-center gap-2">
-                <a href="/" className="underline underline-offset-2">
+                <Link href="/" className="underline underline-offset-2">
                   Главная
-                </a>
+                </Link>
                 <span>/</span>
               </li>
               <li aria-current="page" className="text-neutral-800">
@@ -64,18 +66,18 @@ export default function PromotionsPage() {
                   </div>
                   <p className="mb-4 text-xs text-neutral-500">Акция действует до {promo.validTo}</p>
                   <div className="mt-auto flex flex-wrap gap-2">
-                    <a
+                    <Link
                       href={`/akcii/${promo.slug}`}
                       className="inline-flex items-center justify-center rounded-lg border border-neutral-200 bg-white px-4 py-2 text-xs font-medium transition-colors hover:bg-neutral-50"
                     >
                       Подробные условия
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                       href={`/zapis?promotion=${promo.slug}`}
                       className="inline-flex items-center justify-center rounded-lg border border-neutral-900 bg-neutral-900 px-4 py-2 text-xs font-medium text-white transition-colors hover:bg-neutral-800"
                     >
                       Записаться по акции
-                    </a>
+                    </Link>
                   </div>
                 </article>
               ))}

@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import { useState, useEffect, Suspense } from "react"
 
@@ -75,9 +76,9 @@ function AppointmentPageContent() {
           <nav className="mb-6 text-sm text-neutral-500" aria-label="Хлебные крошки">
             <ol className="flex flex-wrap gap-2">
               <li className="flex items-center gap-2">
-                <a href="/" className="underline underline-offset-2">
+                <Link href="/" className="underline underline-offset-2">
                   Главная
-                </a>
+                </Link>
                 <span>/</span>
               </li>
               <li aria-current="page" className="text-neutral-800">
@@ -265,24 +266,24 @@ function AppointmentPageContent() {
                     <div className="mb-3">
                       <div className="text-xs text-neutral-500">Услуга</div>
                       <div className="text-sm font-semibold">{selectedService.title}</div>
-                      <a
+                      <Link
                         href={`/uslugi/${selectedService.slug}`}
                         className="mt-1 text-xs text-neutral-600 underline underline-offset-2"
                       >
                         Подробнее об услуге →
-                      </a>
+                      </Link>
                     </div>
                   )}
                   {selectedDirection && (
                     <div>
                       <div className="text-xs text-neutral-500">Направление</div>
                       <div className="text-sm font-semibold">{selectedDirection.title}</div>
-                      <a
+                      <Link
                         href={`/napravleniya/${selectedDirection.slug}`}
                         className="mt-1 text-xs text-neutral-600 underline underline-offset-2"
                       >
                         Подробнее о направлении →
-                      </a>
+                      </Link>
                     </div>
                   )}
                 </div>

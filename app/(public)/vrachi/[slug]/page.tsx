@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 interface PageProps {
   params: {
     slug: string
@@ -22,9 +24,9 @@ export default async function DoctorPage({ params }: PageProps) {
             <h1 className="mb-4 text-3xl font-semibold">Врач не найден</h1>
             <p className="text-sm text-neutral-600">
               Информация по запрошенному врачу будет добавлена позже. Вы можете вернуться в раздел{" "}
-              <a href="/vrachi" className="underline underline-offset-2">
+              <Link href="/vrachi" className="underline underline-offset-2">
                 «Наши врачи»
-              </a>
+              </Link>
               .
             </p>
           </div>
@@ -40,15 +42,15 @@ export default async function DoctorPage({ params }: PageProps) {
           <nav className="mb-6 text-sm text-neutral-500" aria-label="Хлебные крошки">
             <ol className="flex flex-wrap gap-2">
               <li className="flex items-center gap-2">
-                <a href="/" className="underline underline-offset-2">
+                <Link href="/" className="underline underline-offset-2">
                   Главная
-                </a>
+                </Link>
                 <span>/</span>
               </li>
               <li className="flex items-center gap-2">
-                <a href="/vrachi" className="underline underline-offset-2">
+                <Link href="/vrachi" className="underline underline-offset-2">
                   Наши врачи
-                </a>
+                </Link>
                 <span>/</span>
               </li>
               <li aria-current="page" className="text-neutral-800">
@@ -76,18 +78,18 @@ export default async function DoctorPage({ params }: PageProps) {
                 </div>
 
                 <div className="mb-6 flex flex-wrap gap-3">
-                  <a
+                  <Link
                     href={`/zapis?doctor=${params.slug}`}
                     className="inline-flex items-center justify-center rounded-xl border border-neutral-900 bg-neutral-900 px-6 py-3 text-base font-medium text-white transition-colors hover:bg-neutral-800"
                   >
                     Записаться к врачу
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href={`/napravleniya/beremennost`}
                     className="inline-flex items-center justify-center rounded-xl border border-neutral-200 bg-white px-6 py-3 text-base font-medium transition-colors hover:bg-neutral-50"
                   >
                     Беременность и роды
-                  </a>
+                  </Link>
                 </div>
 
                 <section aria-label="О враче" className="mb-8">
@@ -105,13 +107,13 @@ export default async function DoctorPage({ params }: PageProps) {
                   </p>
                   <div className="flex flex-wrap gap-2 text-xs">
                     {doctor.directions.map((direction) => (
-                      <a
+                      <Link
                         key={direction.slug}
                         href={`/napravleniya/${direction.slug}`}
                         className="inline-flex items-center rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-neutral-700 transition-colors hover:bg-neutral-100"
                       >
                         {direction.title}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 </section>
@@ -147,12 +149,12 @@ export default async function DoctorPage({ params }: PageProps) {
                     Оставьте заявку через форму записи или свяжитесь с нами по телефону — администратор поможет подобрать
                     удобное время приёма.
                   </p>
-                  <a
+                  <Link
                     href={`/zapis?doctor=${params.slug}`}
                     className="inline-flex w-full items-center justify-center rounded-xl border border-neutral-900 bg-neutral-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
                   >
                     Оставить заявку
-                  </a>
+                  </Link>
                 </section>
               </aside>
             </div>

@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { MediaPlaceholder } from "@/components/MediaPlaceholder"
 
 export function Footer() {
@@ -17,27 +18,27 @@ export function Footer() {
               Разделы
             </div>
             <nav className="mt-3 flex flex-col gap-1.5 text-xs text-neutral-700" aria-label="Основные разделы сайта">
-              <a href="/napravleniya" className="hover:underline hover:underline-offset-2">
+              <Link href="/napravleniya" className="hover:underline hover:underline-offset-2">
                 Направления
-              </a>
-              <a href="/uslugi" className="hover:underline hover:underline-offset-2">
+              </Link>
+              <Link href="/uslugi" className="hover:underline hover:underline-offset-2">
                 Услуги
-              </a>
-              <a href="/vrachi" className="hover:underline hover:underline-offset-2">
+              </Link>
+              <Link href="/vrachi" className="hover:underline hover:underline-offset-2">
                 Врачи
-              </a>
-              <a href="/kliniki" className="hover:underline hover:underline-offset-2">
+              </Link>
+              <Link href="/kliniki" className="hover:underline hover:underline-offset-2">
                 Клиники
-              </a>
-              <a href="/akcii" className="hover:underline hover:underline-offset-2">
+              </Link>
+              <Link href="/akcii" className="hover:underline hover:underline-offset-2">
                 Акции
-              </a>
-              <a href="/stati" className="hover:underline hover:underline-offset-2">
+              </Link>
+              <Link href="/stati" className="hover:underline hover:underline-offset-2">
                 Статьи
-              </a>
-              <a href="/online" className="hover:underline hover:underline-offset-2">
+              </Link>
+              <Link href="/online" className="hover:underline hover:underline-offset-2">
                 Онлайн‑консультации
-              </a>
+              </Link>
             </nav>
           </div>
 
@@ -48,15 +49,15 @@ export function Footer() {
             <div className="mt-3 space-y-1 text-xs text-neutral-700">
               <p>Телефон: +7 (999) 123-45-67</p>
               <p>Email: info@mesedclinic.ru</p>
-              <a href="/oms" className="block hover:underline hover:underline-offset-2">
+              <Link href="/oms" className="block hover:underline hover:underline-offset-2">
                 Документация ОМС
-              </a>
-              <a href="/strahovka" className="block hover:underline hover:underline-offset-2">
+              </Link>
+              <Link href="/strahovka" className="block hover:underline hover:underline-offset-2">
                 Страховка
-              </a>
-              <a href="/vozvrat-naloga" className="block hover:underline hover:underline-offset-2">
+              </Link>
+              <Link href="/vozvrat-naloga" className="block hover:underline hover:underline-offset-2">
                 Возврат налога за лечение
-              </a>
+              </Link>
               <span className="block text-neutral-400">
                 Политика конфиденциальности
               </span>

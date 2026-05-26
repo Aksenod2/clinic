@@ -21,18 +21,18 @@ export default function HomePage() {
                   Сеть медицинских центров с многолетним опытом. Ведение беременности, гинекология, педиатрия и другие направления.
                 </p>
                 <div className="flex flex-wrap gap-3">
-                  <a
+                  <Link
                     href="/zapis"
                     className="inline-flex items-center justify-center rounded-xl border border-neutral-900 bg-neutral-900 px-6 py-3 text-base font-medium text-white transition-colors hover:bg-neutral-800"
                   >
                     Записаться на приём
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href="/napravleniya"
                     className="inline-flex items-center justify-center rounded-xl border border-neutral-200 bg-white px-6 py-3 text-base font-medium transition-colors hover:bg-neutral-50"
                   >
                     Направления клиники
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="flex items-center justify-center">
@@ -56,12 +56,12 @@ export default function HomePage() {
                   Женское здоровье, беременность и роды, дети, мужское здоровье — все ключевые направления в одном месте.
                 </p>
               </div>
-              <a
+              <Link
                 href="/napravleniya"
                 className="inline-flex items-center justify-center rounded-xl border border-neutral-200 bg-white px-5 py-2.5 text-sm font-medium transition-colors hover:bg-neutral-100"
               >
                 Все направления →
-              </a>
+              </Link>
             </header>
 
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -88,7 +88,7 @@ export default function HomePage() {
                     <div className="text-xs text-neutral-500">{direction.servicesCount}</div>
                   </div>
                   <div className="mt-4 flex flex-wrap gap-2">
-                    <a
+                    <Link
                       href={`/napravleniya/${direction.slug}`}
                       className={`inline-flex flex-1 items-center justify-center rounded-xl border px-3 py-2 text-xs font-medium transition-colors ${
                         direction.isHighlighted
@@ -97,13 +97,13 @@ export default function HomePage() {
                       }`}
                     >
                       Подробнее
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                       href={`/uslugi?direction=${direction.slug}`}
                       className="inline-flex flex-1 items-center justify-center rounded-xl border border-neutral-200 bg-white px-3 py-2 text-xs font-medium text-neutral-800 transition-colors hover:bg-neutral-50"
                     >
                       Услуги
-                    </a>
+                    </Link>
                   </div>
                 </article>
               ))}
@@ -215,12 +215,12 @@ export default function HomePage() {
                   Специалисты, которые ведут беременность, занимаются женским и детским здоровьем в Mesedclinic.
                 </p>
               </div>
-              <a
+              <Link
                 href="/vrachi"
                 className="inline-flex items-center justify-center rounded-xl border border-neutral-200 bg-white px-5 py-2.5 text-sm font-medium transition-colors hover:bg-neutral-100"
               >
                 Все врачи клиники →
-              </a>
+              </Link>
             </header>
 
             <div className="grid gap-4 md:grid-cols-3">
@@ -276,18 +276,18 @@ export default function HomePage() {
                       ))}
                     </div>
                     <div className="mt-auto flex flex-wrap gap-2 pt-2">
-                      <a
+                      <Link
                         href={`/vrachi/${doctor.slug}`}
                         className="inline-flex flex-1 items-center justify-center rounded-lg border border-neutral-200 bg-neutral-50 px-3 py-1.5 text-xs font-medium transition-colors hover:bg-neutral-100"
                       >
                         Профиль врача
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                         href={`/zapis?doctor=${doctor.slug}`}
                         className="inline-flex flex-1 items-center justify-center rounded-lg border border-neutral-900 bg-neutral-900 px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-neutral-800"
                   >
                     Записаться
-                  </a>
+                  </Link>
                 </div>
               </div>
                 </article>
@@ -348,30 +348,30 @@ export default function HomePage() {
                     Акция действует до {promo.validTo}
                   </p>
                   <div className="mt-auto flex flex-wrap gap-2">
-                    <a
+                    <Link
                       href={`/akcii/${promo.slug}`}
                       className="inline-flex items-center justify-center rounded-lg border border-neutral-200 bg-white px-4 py-2 text-xs font-medium transition-colors hover:bg-neutral-50"
                     >
                       Подробные условия
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                       href={`/zapis?promotion=${promo.slug}`}
                       className="inline-flex items-center justify-center rounded-lg border border-neutral-900 bg-neutral-900 px-4 py-2 text-xs font-medium text-white transition-colors hover:bg-neutral-800"
                     >
                       Записаться по акции
-                    </a>
+                    </Link>
                   </div>
                 </article>
               ))}
               </div>
 
             <div className="mt-6 text-center">
-              <a
+              <Link
                 href="/akcii"
                 className="inline-flex items-center justify-center rounded-xl border border-neutral-200 bg-white px-6 py-3 text-base font-medium transition-colors hover:bg-neutral-50"
               >
                 Все акции →
-              </a>
+              </Link>
             </div>
           </section>
 
@@ -415,12 +415,12 @@ export default function HomePage() {
                     <div className="mb-2 text-xs text-neutral-500">{clinic.note}</div>
                   ) : null}
                   <div className="mb-3 text-sm text-neutral-700">{clinic.phone}</div>
-                  <a
+                  <Link
                     href={`/kliniki/${clinic.name.toLowerCase()}`}
                     className="text-sm text-neutral-600 underline underline-offset-2"
                   >
                     Подробнее о филиале →
-                  </a>
+                  </Link>
                 </article>
               ))}
             </div>
@@ -485,7 +485,7 @@ export default function HomePage() {
             </header>
 
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              <a
+              <Link
                 href="/vakansii"
                 className="group flex flex-col rounded-xl border border-neutral-200 bg-white p-5 transition-colors hover:border-neutral-300 hover:bg-neutral-50"
               >
@@ -496,9 +496,9 @@ export default function HomePage() {
                 <div className="mt-auto text-sm text-neutral-500 underline underline-offset-2 group-hover:text-neutral-700">
                   Смотреть вакансии →
                 </div>
-              </a>
+              </Link>
 
-              <a
+              <Link
                 href="/strahovka"
                 className="group flex flex-col rounded-xl border border-neutral-200 bg-white p-5 transition-colors hover:border-neutral-300 hover:bg-neutral-50"
               >
@@ -509,9 +509,9 @@ export default function HomePage() {
                 <div className="mt-auto text-sm text-neutral-500 underline underline-offset-2 group-hover:text-neutral-700">
                   Подробнее о страховке →
                 </div>
-              </a>
+              </Link>
 
-              <a
+              <Link
                 href="/oms"
                 className="group flex flex-col rounded-xl border border-neutral-200 bg-white p-5 transition-colors hover:border-neutral-300 hover:bg-neutral-50"
               >
@@ -522,9 +522,9 @@ export default function HomePage() {
                 <div className="mt-auto text-sm text-neutral-500 underline underline-offset-2 group-hover:text-neutral-700">
                   Документация ОМС →
                 </div>
-              </a>
+              </Link>
 
-              <a
+              <Link
                 href="/vozvrat-naloga"
                 className="group flex flex-col rounded-xl border border-neutral-200 bg-white p-5 transition-colors hover:border-neutral-300 hover:bg-neutral-50"
               >
@@ -535,7 +535,7 @@ export default function HomePage() {
                 <div className="mt-auto text-sm text-neutral-500 underline underline-offset-2 group-hover:text-neutral-700">
                   О налоговом вычете →
                 </div>
-              </a>
+              </Link>
             </div>
           </section>
         </div>
